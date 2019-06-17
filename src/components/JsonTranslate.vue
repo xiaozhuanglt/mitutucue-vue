@@ -49,7 +49,7 @@ export default {
         console.log('submit!');
         // console.log(this.inputJson.replace(/\s/g, ""));
         // console.log(JSON.stringify(this.inputJson));
-        var data = { inputJson:this.inputJson.replace(/\s/g, ""),inputKeyWord:this.inputKeyWord}
+        var data = { inputJson:this.inputJson.replace(/\s/g, ""),inputKeyWord:this.inputKeyWord.replace(/\s/g, "")}
         this.$axios.post(this.GLOBAL.host+"/mitutucue/springboot/JsonTranslate/getValueByKey",this.$qs.stringify(data)
       //   {
       //     params:{
@@ -59,9 +59,26 @@ export default {
       // }
       ).then(res => {
         console.log('返回数据')
-        var result = res.data
-        console.log(res)
-        this.inputResult = res.data
+        this.inputResult = '';
+
+        if(null != res.data){
+          var result = res.data
+          var keyWords = this.inputKeyWord.replace(/\s/g, "").split(',');
+          for(var a in result) {
+            var map = result[a].map;
+            for(var key in keyWords){
+              console.log(key,keyWords[key]);
+              console.log(map[keyWords[key]]);
+              this.inputResult = this.inputResult + map[keyWords[key]] + '\t';
+            }
+            //写法二，遍历map
+              // for(var key in map){
+              //   this.inputResult = this.inputResult + map[key] + '\t';
+              // }
+            this.inputResult = this.inputResult + '\r\n';
+          }
+        }
+       
       //获取你需要用到的数据
       });
     }

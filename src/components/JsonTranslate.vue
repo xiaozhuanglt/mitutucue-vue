@@ -3,7 +3,10 @@
 
     <el-row>
       <el-col :span="24"><div class="grid-content bg-purple-dark">
-          
+        <el-col :span="4"><div class="top1">welcome JsonTranslate</div></el-col>
+        <el-col :span="2"><div class="top2"><el-link type="primary" @click="setDemo1">示例1：JSON片段</el-link></div></el-col>
+        <el-col :span="2"><div class="top2"><el-link type="primary" @click="setDemo2">示例2：JSON片段</el-link></div></el-col>
+        <el-col :span="2"><div class="top2"><el-button type="text"  @click="setDemo">文字按钮</el-button></div></el-col>
       </div></el-col>
     </el-row>
     <el-row :gutter="10" type="flex" class="row-bg">
@@ -21,7 +24,7 @@
               <el-input v-model="inputKeyWord" placeholder="请输入需要筛选字段,‘,’逗号相隔" clearable></el-input>
             </el-col>
             <el-col :span="2">
-              <el-button type="primary" @click="onSubmit">格式化</el-button>
+              <div class="button"><el-button type="primary" @click="onSubmit">格式化</el-button></div>
             </el-col>
           </el-row>
           <el-row>
@@ -81,6 +84,17 @@ export default {
        
       //获取你需要用到的数据
       });
+    },
+    setDemo1(){
+      console.log('设置示例');
+      this.inputJson = this.JSONEXAMPLE.jsonExample2;
+      this.inputKeyWord = this.JSONEXAMPLE.jsonKeys1;
+      
+    },
+    setDemo2(){
+      console.log("设置示例二");
+      this.inputJson = this.JSONEXAMPLE.jsonExample1;
+      this.JSONEXAMPLE.jsonKeys2;
     }
   }
 };
@@ -126,5 +140,18 @@ export default {
     margin-bottom: 0px;
     margin: 4px;
   }
- 
+  .top1{
+    padding: 10px;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size:20px;
+
+  }
+ .top2{
+   padding: 15px;
+   font-size:15px;
+
+ }
+ .button{
+   margin-right: 10%;
+ }
 </style>

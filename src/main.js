@@ -8,8 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css'
 import qs from 'qs';
 import axios from "axios";
 import Global from '../config/global';
+import JsonExample from '../config/JsonExample';
 
 Vue.prototype.GLOBAL = Global;
+Vue.prototype.JSONEXAMPLE = JsonExample;
 Vue.prototype.$axios = axios;
 Vue.prototype.$qs = qs;
 

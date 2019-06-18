@@ -5,15 +5,15 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-import qs from 'qs';
-import axios from "axios";
-import Global from '../config/global';
-import JsonExample from '../config/JsonExample';
+import qs from 'qs'
+import axios from 'axios'
+import Global from '../config/global'
+import JsonExample from '../config/JsonExample'
 
-Vue.prototype.GLOBAL = Global;
-Vue.prototype.JSONEXAMPLE = JsonExample;
-Vue.prototype.$axios = axios;
-Vue.prototype.$qs = qs;
+Vue.prototype.GLOBAL = Global
+Vue.prototype.JSONEXAMPLE = JsonExample
+Vue.prototype.$axios = axios
+Vue.prototype.$qs = qs
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false

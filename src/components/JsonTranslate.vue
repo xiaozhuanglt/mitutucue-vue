@@ -28,7 +28,7 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-input v-model="inputResult"  readonly="true" type="textarea" :rows="39"></el-input>
+            <el-input v-model="inputResult" readonly type="textarea" :rows="39"></el-input>
           </el-row>
         </div>
       </el-col>
@@ -44,16 +44,16 @@ export default {
       msg: 'Welcome to JsonTranslate',
       inputJson: '',
       inputKeyWord: '',
-      inputResult:''
-    };
+      inputResult: ''
+    }
   },
-   methods: {
-      onSubmit() {
-        console.log('submit!');
-        // console.log(this.inputJson.replace(/\s/g, ""));
-        // console.log(JSON.stringify(this.inputJson));
-        var data = { inputJson:this.inputJson.replace(/\s/g, ""),inputKeyWord:this.inputKeyWord.replace(/\s/g, "")}
-        this.$axios.post(this.GLOBAL.host+"/mitutucue/springboot/JsonTranslate/getValueByKey",this.$qs.stringify(data)
+  methods: {
+    onSubmit () {
+      console.log('submit!')
+      // console.log(this.inputJson.replace(/\s/g, ''));
+      // console.log(JSON.stringify(this.inputJson));
+      var data = { inputJson: this.inputJson.replace(/\s/g, ''), inputKeyWord: this.inputKeyWord.replace(/\s/g, '')}
+      this.$axios.post(this.GLOBAL.remoteHost+"/mitutucue/springboot/JsonTranslate/getValueByKey",this.$qs.stringify(data)
       //   {
       //     params:{
       //     inputJson:this.inputJson, //参数，键值对，key值：value值
@@ -62,42 +62,42 @@ export default {
       // }
       ).then(res => {
         console.log('返回数据')
-        this.inputResult = '';
+        this.inputResult = ''
 
         if(null != res.data){
           var result = res.data
-          var keyWords = this.inputKeyWord.replace(/\s/g, "").split(',');
+          var keyWords = this.inputKeyWord.replace(/\s/g, '').split(',')
           for(var a in result) {
-            var map = result[a].map;
+            var map = result[a].map
             for(var key in keyWords){
-              console.log(key,keyWords[key]);
-              console.log(map[keyWords[key]]);
-              this.inputResult = this.inputResult + map[keyWords[key]] + '\t';
+              console.log(key,keyWords[key])
+              console.log(map[keyWords[key]])
+              this.inputResult = this.inputResult + map[keyWords[key]] + '\t'
             }
             //写法二，遍历map
               // for(var key in map){
               //   this.inputResult = this.inputResult + map[key] + '\t';
               // }
-            this.inputResult = this.inputResult + '\r\n';
+            this.inputResult = this.inputResult + '\r\n'
           }
         }
        
       //获取你需要用到的数据
-      });
+      })
     },
     setDemo1(){
-      console.log('设置示例');
-      this.inputJson = this.JSONEXAMPLE.jsonExample2;
-      this.inputKeyWord = this.JSONEXAMPLE.jsonKeys1;
+      console.log('设置示例')
+      this.inputJson = this.JSONEXAMPLE.jsonExample2
+      this.inputKeyWord = this.JSONEXAMPLE.jsonKeys1
       
     },
     setDemo2(){
-      console.log("设置示例二");
-      this.inputJson = this.JSONEXAMPLE.jsonExample1;
-      this.JSONEXAMPLE.jsonKeys2;
+      console.log("设置示例二")
+      this.inputJson = this.JSONEXAMPLE.jsonExample1
+      this.JSONEXAMPLE.jsonKeys2
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -130,8 +130,6 @@ export default {
     border-radius: 4px;
     min-height: 870px;
     margin-bottom: 0px;
-
-
   }
   .row1{
     background: #CD8500;

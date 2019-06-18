@@ -6,7 +6,7 @@
         <el-col :span="4"><div class="top1">welcome JsonTranslate</div></el-col>
         <el-col :span="2"><div class="top2"><el-link type="primary" @click="setDemo1">示例1：JSON片段</el-link></div></el-col>
         <el-col :span="2"><div class="top2"><el-link type="primary" @click="setDemo2">示例2：JSON片段</el-link></div></el-col>
-        <el-col :span="2"><div class="top2"><el-button type="text"  @click="setDemo">文字按钮</el-button></div></el-col>
+        <!-- <el-col :span="2"><div class="top2"><el-button type="text"  @click="setDemo">文字按钮</el-button></div></el-col> -->
       </div></el-col>
     </el-row>
     <el-row :gutter="10" type="flex" class="row-bg">
